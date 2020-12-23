@@ -7,6 +7,8 @@ from asciimatics.effects import Cycle, Stars
 from asciimatics.renderers import FigletText
 from asciimatics.scene import Scene
 from asciimatics.screen import Screen
+
+#fun fact with tokens If put on internet they change them. So dont do that
 #NTAzMDMxM---DQyNDIxMDMwOTIy.X9_3Iw.O882DNtD9DUUs1eJcDeTje409X4 [Walter]
 #Nzc5NTA5N---jQ2MTc1NjMzNDMw.X7hk7g.CxSXSuTj9sz0DmL8vvauRB5ZKkw [bot]
 #NzkwMzE4OT---A4NTA2MTEyMDMw.X-OEhQ.Cl5j9sE9xDeBTUyz9fOKYNC3Z48 [bot_test]
@@ -104,4 +106,5 @@ def get_client_data():
     token = data['token']
     return token
 
-client.run(get_client_data(), bot = False)
+#final check. NO TOKEN SHOULD BE PUT HERE AND COMMITED. IF THERE IS I WILL RIP YOUR ORGANS OUT OF YOUR STOMACH
+client.run("||||", bot = False)
