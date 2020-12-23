@@ -1,0 +1,20 @@
+{
+  "guilds": [
+
+    {
+      "guildId": 0,
+      "privateChannel": 0,
+      "listenChannel": 0
+    },
+    {
+      "guildId": 779734525600333874,
+      "privateChannel": 779825605634031727,
+      "listenChannel": 779734525600333877
+    },
+    {
+      "guildId": 790258926360199188,
+      "privateChannel": 790258959956049963,
+      "listenChannel": 790258926360199192
+    }
+  ]
+}
