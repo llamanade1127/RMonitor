@@ -7,9 +7,9 @@ from asciimatics.effects import Cycle, Stars
 from asciimatics.renderers import FigletText
 from asciimatics.scene import Scene
 from asciimatics.screen import Screen
-#NTAzMDMxMDQyNDIxMDMwOTIy.X9_3Iw.O882DNtD9DUUs1eJcDeTje409X4 [Walter]
-#Nzc5NTA5NjQ2MTc1NjMzNDMw.X7hk7g.CxSXSuTj9sz0DmL8vvauRB5ZKkw [bot]
-#NzkwMzE4OTA4NTA2MTEyMDMw.X-OEhQ.Cl5j9sE9xDeBTUyz9fOKYNC3Z48 [bot_test]
+#NTAzMDMxM---DQyNDIxMDMwOTIy.X9_3Iw.O882DNtD9DUUs1eJcDeTje409X4 [Walter]
+#Nzc5NTA5N---jQ2MTc1NjMzNDMw.X7hk7g.CxSXSuTj9sz0DmL8vvauRB5ZKkw [bot]
+#NzkwMzE4OT---A4NTA2MTEyMDMw.X-OEhQ.Cl5j9sE9xDeBTUyz9fOKYNC3Z48 [bot_test]
 client = commands.Bot(command_prefix = '.')
 
 @client.event
