@@ -11,13 +11,12 @@ from asciimatics.screen import Screen
 #fun fact with tokens If put on internet they change them. So dont do that
 #NTAzMDMxM---DQyNDIxMDMwOTIy.X9_3Iw.O882DNtD9DUUs1eJcDeTje409X4 [Walter]
 #Nzc5NTA5N---jQ2MTc1NjMzNDMw.X7hk7g.CxSXSuTj9sz0DmL8vvauRB5ZKkw [bot]
-#NzkwMzE4OT---A4NTA2MTEyMDMw.X-OEhQ.Cl5j9sE9xDeBTUyz9fOKYNC3Z48 [bot_test]
+#Nzc5NTA5NjQ2MT---c1NjMzNDMw.X7hk7g.vjH0Vs5qPonyt1cnNdE76cP8O1U [bot_test]
 client = commands.Bot(command_prefix = '.')
 
 @client.event
 async def on_ready():
     #Screen.wrapper(start)
-
     print_data_start()
 
 
@@ -30,6 +29,13 @@ async def ping(ctx):
 async def on_message(message):
     channel = message.channel.id
     guild = message.guild.id
+    if message.content == 'setl':
+        await set_channel(message)
+    if message.content == 'setp':
+        await set_private_channel(message)
+    if message.content == 'setg':
+        await set_new_guild(message)
+
     #print(guild)
     if check_channel(channel, guild) == channel:
         channelToSend = client.get_channel(get_private_channel(guild))
@@ -43,11 +49,46 @@ async def send_embed_to_channel(channel_to_send, message):
         embedVar.add_field(name="Message Link", value=f"{message.jump_url}", inline=False)
         await channel_to_send.send(embed=embedVar)
 
+async def set_channel(message):
+    listenCahnnel = message.channel.id
+    guildId = message.guild.id
+
+    with open('./guilds.json') as f:
+        data = json.load(f)
+    guilds_json = data["guilds"]
+    for guilds in guilds_json:
+        if guilds["guildId"] == guildId:
+            guilds["listenChannel"] = message.channel.id
+            print(f"New channel set as {message.channel.id}")
+            write_json(data)
 
 
+async def set_private_channel(message):
+    guildId = message.guild.id
+    channel_id = message.channel.id
+
+    with open('./guilds.json') as f:
+        data = json.load(f)
+    guilds_json = data["guilds"]
+    for guilds in guilds_json:
+        if guilds["guildId"] == guildId:
+            guilds["privateChannel"] = message.channel.id
+            print(f"New channel set as {message.channel.id}")
+            write_json(data)
+
+async def set_new_guild(message):
+    guildId = message.guild.id
+    with open('./guilds.json') as f:
+        data = json.load(f)
+    guild_json = data['guilds']
+    new = {'guildId': guildId, 'privateChannel':0, 'listenChannel':0}
+    guild_json.append(new)
+    write_json(data)
 
 #end_commands
-
+def write_json(data, filename='./guilds.json'):
+    with open(filename, 'w') as f:
+        json.dump(data, f, indent=4)
 
 def start(screen):
     effects = [
@@ -73,7 +114,7 @@ def check_channel(channel, guild):
     for guilds in guilds_json:
         if guilds["guildId"] == guild:
             channel = guilds["listenChannel"]
-            print(channel)
+            #print(channel)
             return channel
     return False
 
@@ -107,4 +148,4 @@ def get_client_data():
     return token
 
 #final check. NO TOKEN SHOULD BE PUT HERE AND COMMITED. IF THERE IS I WILL RIP YOUR ORGANS OUT OF YOUR STOMACH
-client.run("||||", bot = False)
+client.run("||||", bot = True)
